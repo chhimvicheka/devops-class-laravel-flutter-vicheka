@@ -2,19 +2,22 @@
 - Student: [Name]
 
 ## Lesson 2: My CI/CD pipeline
-- Project: [Flutter app + Laravel API]
-- Trigger: [Push to practice branch]
-- Target: [Staging + test device]
+- Project: IT Support System
+- Trigger: push to feature/register
+- Target: Laravel staging server + Android testing device
 
 ### Pipeline design
 Code -> Test -> Build -> Release -> Deploy
-1. Code: [action] | [person] | [output] | [auto/manual]
-2. Test: [action] | [person] | [output] | [auto/manual]
-3. Build: [action] | [person] | [output] | [auto/manual]
-4. Release: [action] | [person] | [output] | [auto/manual]
-5. Deploy: [action] | [person] | [output] | [auto/manual]
+
+1. Code: Call API | Developers | Committed | Manual
+2. Test: Check API | Developers | Test result | Auto
+3. Build: Tag v1.4, SMTP & build APK | Developer | Artifact pass | Auto
+4. Release: Approve v1.0.2 | Release manager | Approved version | Manual
+5. Deploy: Stage API and install APK | APK tester | Running app | Manual
+
 ### Controls
-On test/build failure: ... | Release approval by: ...
-After deployment, check: ... | If it fails: ...
-Feedback for the next change: ...
-Optional drawing: ![My pipeline](pipeline.png)
+On test/build failure: stop, fix, and retest | Release approval by: release manager
+After deployment, check: app works on the test device | If it fails: rollback or fix and redeploy
+Feedback for the next change: monitor app behavior and collect tester feedback
+
+Optional drawing: ![My pipeline](image.png)
